@@ -1,0 +1,47 @@
+<header class="header">
+  <div class="container header__container">
+    <a href="/">
+      <div class="logo">
+        <h1 class="logo__title">Launchstore</h1>
+        <h2 class="logo__subtitle">COMPRA E VENDA</h2>
+      </div>
+    </a>
+    <form class="search-form" action="/search" method="get">
+      <input class="search-form__field" type="text" name="filter" placeholder="Buscar por produtos" value="{{ search.term }}">
+    </form>
+    <nav>
+      <ul class="primary">
+        <li class="primary__item">
+          <a href="/products/create">
+            <i class="material-icons">add</i>
+            Novo Anúncio  
+          </a>
+        </li>
+        <li class="primary__item account">
+          <a href="/users/login">
+            <i class="material-icons">account_circle</i>
+            Minha Conta
+          </a>
+          {% if user %}
+          <ul class="submenu">
+            <li>
+              <a href="/users/{{ user.id }}/ads">Meus anúncions</a>
+            </li>
+            <li>
+              <a href="/buying">Meus pedidos</a>
+            </li>
+            <li>
+              <a href="/selling">Minhas vendas</a>
+            </li>
+            <li>
+              <form action="/users/logout" method="post">
+                <button type="submit">Sair</button>
+              </form>
+            </li>
+          </ul>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

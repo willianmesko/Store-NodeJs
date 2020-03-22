@@ -1,0 +1,11 @@
+<div class="product-shop">
+  <div class="product-shop__img" style="background-image: url('{{ product.img }}')"></div>
+
+  {% if product.old_price != product.price %}
+  <div class="product-shop__old-price">{{ product.formattedOdld_price }}</div>
+  {% endif %}
+
+  <p class="product-shop__price">{{ product.formattedPrice }}</p>
+  <h4 class="product-shop__name">{{ product.name }}</h4>
+  <a class="product-shop__btn button" href="/products/{{ product.id }}">Ver Produto</a>
+</div>

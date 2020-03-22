@@ -1,0 +1,16 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+<section class="shop">
+  <h2 class="shop__title">Últimos Produtos</h2>
+  <div class="shop__items">
+
+    {% for product in products %}
+      {% if loop.index < 4 %}
+        {% include 'components/product-shop.njk' %}
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+{% endblock %}

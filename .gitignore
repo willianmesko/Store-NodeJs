@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+
+# path of uploads
+public/images
+
+# database structure
+*.sql

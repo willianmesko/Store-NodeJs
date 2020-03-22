@@ -1,0 +1,17 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+<section class="form-section user-dashboard">
+  <form action="/users/{{ user.id }}?_method=PUT" method="post">
+    <h3 class="form-section__title">Detalhes</h3>
+    <div class="form-section__fields">
+      {% include 'user/fields.njk' %}
+    </div>
+    <button class="button button--edit" type="submit">Atualizar</button>
+  </form>
+
+  <form action="/users?_method=DELETE" method="post">
+    <button class="button button--remove" type="submit">Deletar</button>
+  </form>
+</section>
+{% endblock %}

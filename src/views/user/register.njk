@@ -1,0 +1,13 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+<section class="form-section user-register">
+  <form action="/users/register" method="post">
+    <h3 class="form-section__title">Registre-se</h3>
+    <div class="form-section__fields">
+      {% include 'user/fields.njk' %}
+    </div>
+    <button class="button" type="submit">Salvar</button>
+  </form>
+</section>
+{% endblock %}

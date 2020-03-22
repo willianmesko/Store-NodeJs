@@ -1,0 +1,30 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+<section class="search">
+  <aside class="search__filter">
+    <div class="header">
+      <h2>{{ search.term }}</h2>
+      <p>{{ search.total }} {{ 'encontrados' if search.total > 1 else 'encontrado' }}</p>
+    </div>
+    <nav class="filter">
+      <h4>Catergorias</h4>
+      <ul>
+        {% for category in categories %}
+        <li>
+          <a href="/search?filter={{ search.term }}&category={{ category.id }}">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="search__products">
+
+    {% for product in products %}
+      {% include 'components/product-shop.njk' %}
+    {% endfor %}
+
+  </div>
+</section>
+{% endblock %}

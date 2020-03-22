@@ -1,0 +1,50 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+<section class="product">
+  <div class="gallery">
+    <div class="gallery__highlight">
+      <img src="{{ files[0].src }}" alt="{{ files[0].name }}" onclick="productGalleryHighlight().openHighlightOverlay()">
+
+      <div class="highlight-overlay">
+        <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+        <span class="highlight-overlay__close">
+          <i class="material-icons" onclick="productGalleryHighlight().closeHighlightOverlay()">close</i>
+        </span>
+      </div>
+    </div>
+    <div class="gallery__preview">
+      {% for image in files %}
+        <img {{ "class='active'" if loop.index0 == 0 }} src="{{ image.src }}" alt="{{ image.name }}" onclick="productGalleryHighlight().setImageHighlight(event)">
+      {% endfor %}
+    </div>
+  </div>
+  <div class="info">
+    <h1 class="info__title">{{ product.name }}</h1>
+    <div class="info__published">
+      <p>Publicado em {{ product.published.day }} às {{ product.published.hour }}</p>
+    </div>
+    <div class="info__description">
+      {{ product.description }}
+    </div>
+    <div class="info__price-buy">
+      <div class="price">
+        {{ product.formattedPrice }}
+
+        {% if product.price != product.old_price %}
+          <span class="old">{{ product.formattedOdld_price }}</span>
+        {% endif %}
+      </div>
+      <div class="buy">
+        {% if product.status == 0 %}
+          <p class="unavailable">Indisponível</p>
+        {% elseif product.quantity == 0 %}
+          <p class="unavailable">Fora de estoque</p>
+        {% else %}
+          <button class="button">Comprar</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
